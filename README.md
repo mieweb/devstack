@@ -37,7 +37,7 @@
 
 
 #############################################################
-# Everything below is from the default devstack README.md file
+## Everything below is from the [openstack-dev/devstack](https://github.com/openstack-dev/devstack) README.md file
 #############################################################
 DevStack is a set of scripts and utilities to quickly deploy an OpenStack cloud.
 
