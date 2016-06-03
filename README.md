@@ -1,5 +1,5 @@
 # MIE Devstack Local Environment Install
-[[Instructions using Vagrant + Virtualbox on Mac OS X can be found here]](https://docs.google.com/a/mieweb.com/document/d/1Z7atkdpGPlJaWb0e0L89Jhgzf1lkbLTfISToKpbL0FQ/edit?usp=sharing)
+[Instructions using Vagrant + Virtualbox on Mac OS X can be found here](https://docs.google.com/a/mieweb.com/document/d/1Z7atkdpGPlJaWb0e0L89Jhgzf1lkbLTfISToKpbL0FQ/edit?usp=sharing)
 
 **NOTE:** You must update the **local.conf** file and configure it for your local environment before attempting to run devstack.
 
