@@ -98,10 +98,11 @@ Vagrant.configure(2) do |config|
     git config --global user.email #{email};
     # Clone the openstack-dev/devstack github repository;
     cd /opt;
-    git clone https://github.com/mieweb/devstack.git origin/mitaka_controller_node1;
+    git clone https://github.com/mieweb/devstack.git;
     cd devstack;
     # Create development branch;
     git checkout -b #{username}_mitaka_controller_node1 remotes/origin/mitaka_controller_node1;
+    git remote add upstream https://github.com/openstack-dev/devstack.git
     # Create 'stack' user;
     sudo ./tools/create-stack-user.sh;
     sudo chown -R stack:stack .;
