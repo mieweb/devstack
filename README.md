@@ -3,8 +3,8 @@
 
 **NOTE:** You must update the **local.conf** file and configure it for your local environment before attempting to run devstack.
 
-## Under - Common Configurations in **local.conf**:
-* You will need to update the IP addresses accordingly for the following variables:
+## Under Common Configurations in **local.conf**
+### You will need to update the IP addresses accordingly for the following variables:
 
 1. This IP should be your local machine address and will serve as a router for a multi-node setup:
    ```bash
