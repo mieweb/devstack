@@ -11,6 +11,7 @@
 accrc
 doc/files
 doc/build
+.DS_Store
 files/*.gz
 files/*.rpm
 files/*.rpm.*
@@ -20,8 +21,6 @@ files/images
 files/pip-*
 files/get-pip.py*
 files/ir-deploy*
-local.conf
-local.sh
 localrc
 proto
 shocco

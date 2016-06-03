@@ -1,3 +1,40 @@
+MIE Devstack instructions using Vagrant + Virtualbox can be found here:
+https://docs.google.com/a/mieweb.com/document/d/1Z7atkdpGPlJaWb0e0L89Jhgzf1lkbLTfISToKpbL0FQ/edit?usp=sharing
+
+NOTE: You must update the local.conf file and configure it for your local environment
+before attempting to run devstack.
+
+Under - Common Configurations - you will need to update the IP addresses accordingly
+for the following variables:
+
+# This IP should be your local machine address and will serve as a router for a 
+multi-node setup:
+PUBLIC_NETWORK_GATEWAY="192.168.1.6"
+
+# These IPs should be on the same subnet as the local machine IP above, but can
+be any IP address on that subnet you'd like:
+HOST_IP=192.168.1.15
+SERVICE_HOST=192.168.1.15
+MYSQL_HOST=192.168.1.15
+RABBIT_HOST=192.168.1.15
+GLANCE_HOSTPORT=192.168.1.15:9292
+
+# This floating range is your local machine subnet and will be created as the Openstack
+PUBLIC network:
+FLOATING_RANGE="192.168.1.0/24"
+
+# This fixed range is what Openstack will create as a PRIVATE subnet to host instances
+and should NOT be on the same block as your local / public network above:
+FIXED_RANGE="10.0.0.0/24"
+
+# This IP range will be used to assign publicly accessible floating IPs that can be mapped
+to private addresses, and should therefore match your PUBLIC address block defined above.
+Q_FLOATING_ALLOCATION_POOL=start=192.168.1.100,end=192.168.1.200
+
+
+#############################################################
+Everything below is from the default devstack README.md file
+#############################################################
 DevStack is a set of scripts and utilities to quickly deploy an OpenStack cloud.
 
 # Goals
