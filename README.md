@@ -7,33 +7,33 @@
 * You will need to update the IP addresses accordingly for the following variables:
 
 1. This IP should be your local machine address and will serve as a router for a multi-node setup:
-```bash
-PUBLIC_NETWORK_GATEWAY="192.168.1.6"
-```
+   ```bash
+   PUBLIC_NETWORK_GATEWAY="192.168.1.6"
+   ```
 
 2. These IPs should be on the same subnet as the local machine IP above, but can be any IP address on that subnet you'd like:
-```bash
-HOST_IP=192.168.1.15
-SERVICE_HOST=192.168.1.15
-MYSQL_HOST=192.168.1.15
-RABBIT_HOST=192.168.1.15
-GLANCE_HOSTPORT=192.168.1.15:9292
-```
+   ```bash
+   HOST_IP=192.168.1.15
+   SERVICE_HOST=192.168.1.15
+   MYSQL_HOST=192.168.1.15
+   RABBIT_HOST=192.168.1.15
+   GLANCE_HOSTPORT=192.168.1.15:9292
+   ```
 
 3. This floating range is your local machine subnet and will be created as the Openstack PUBLIC network:
-```bash
-FLOATING_RANGE="192.168.1.0/24"
-```
+   ```bash
+   FLOATING_RANGE="192.168.1.0/24"
+   ```
 
 4. This fixed range is what Openstack will create as a PRIVATE subnet to host instances and should NOT be on the same block as your local / public network above:
-```bash
-FIXED_RANGE="10.0.0.0/24"
-```
+   ```bash
+   FIXED_RANGE="10.0.0.0/24"
+   ```
 
 5. This IP range will be used to assign publicly accessible floating IPs that can be mapped to private addresses, and should therefore match your PUBLIC address block defined above.
-```bash
-Q_FLOATING_ALLOCATION_POOL=start=192.168.1.100,end=192.168.1.200
-```
+   ```bash
+   Q_FLOATING_ALLOCATION_POOL=start=192.168.1.100,end=192.168.1.200
+   ```
 
 
 #############################################################
