@@ -1,5 +1,5 @@
-# MIE Devstack instructions using Vagrant + Virtualbox can be found here:
-https://docs.google.com/a/mieweb.com/document/d/1Z7atkdpGPlJaWb0e0L89Jhgzf1lkbLTfISToKpbL0FQ/edit?usp=sharing
+# MIE Devstack Local Environment Install
+[[Instructions using Vagrant + Virtualbox on Mac OS X can be found here]](https://docs.google.com/a/mieweb.com/document/d/1Z7atkdpGPlJaWb0e0L89Jhgzf1lkbLTfISToKpbL0FQ/edit?usp=sharing)
 
 **NOTE:** You must update the **local.conf** file and configure it for your local environment before attempting to run devstack.
 
@@ -27,7 +27,7 @@ https://docs.google.com/a/mieweb.com/document/d/1Z7atkdpGPlJaWb0e0L89Jhgzf1lkbLT
 
 
 #############################################################
-Everything below is from the default devstack README.md file
+# Everything below is from the default devstack README.md file
 #############################################################
 DevStack is a set of scripts and utilities to quickly deploy an OpenStack cloud.
 
