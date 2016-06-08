@@ -57,11 +57,10 @@ Vagrant.configure(2) do |config|
   # View the documentation for the provider you are using for more
   # information on available options.
   config.vm.provider "virtualbox" do |v|
-    v.name = "mitaka-controller-node1"
+    $vm = "mitaka-controller-node1"
     v.customize ["modifyvm", :id, "--memory", "8192"]
     v.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
   end
-
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
   # such as FTP and Heroku are also available. See the documentation at
   # https://docs.vagrantup.com/v2/push/atlas.html for more information.
@@ -72,42 +71,45 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  if Dir.glob("#{File.dirname(__FILE__)}/.vagrant/machines/#{v.name}/*").empty?
+  if Dir.glob("#{File.dirname(__FILE__)}/.vagrant/machines/#{$vm}/*").empty?
     print "MIE GitHub Username: "
-    username = STDIN.gets.chomp
+    $username = STDIN.gets.chomp();
     print "MIE GitHub Email: "
-    email = STDIN.gets.chomp
-    script = "export DEBIAN_FRONTEND=noninteractive; 
-    sudo timedatectl set-timezone America/New_York;
-    export LANGUAGE=en_US.UTF-8;
-    export LANG=en_US.UTF-8;
-    export LC_ALL=en_US.UTF-8;
-    locale-gen en_US.UTF-8;
-    dpkg-reconfigure locales;
-    sudo apt-get update;
-    sudo apt-get install python-software-properties software-properties-common python-keyring -y;
-    sudo apt-get install ubuntu-cloud-keyring -y;
-    sudo apt-get upgrade -y;
-    sudo apt-get dist-upgrade;
-    sudo apt-get install git -y;
-    sudo apt-get install traceroute;
-    sudo apt-get install iproute2;
-    sudo apt-get install mlocate;
-    sudo apt-get update;
-    git config --global user.name #{username};
-    git config --global user.email #{email};
-    # Clone the openstack-dev/devstack github repository;
-    cd /opt;
-    git clone https://github.com/mieweb/devstack.git;
-    cd devstack;
-    # Create development branch;
-    git checkout -b #{username}_mitaka_controller_node1 remotes/origin/mitaka_controller_node1;
+    $email = STDIN.gets.chomp();
+    $script = <<-SCRIPT
+    export DEBIAN_FRONTEND=noninteractive
+    sudo timedatectl set-timezone America/New_York
+    export LANGUAGE=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+    locale-gen en_US.UTF-8
+    dpkg-reconfigure locales
+    sudo apt-get update
+    sudo apt-get install python-software-properties software-properties-common python-keyring -y
+    sudo apt-get install ubuntu-cloud-keyring -y
+    sudo apt-get upgrade -y
+    sudo apt-get dist-upgrade
+    sudo apt-get install git -y
+    sudo apt-get install traceroute
+    sudo apt-get install iproute2
+    sudo apt-get install mlocate
+    sudo apt-get update
+    git config --global user.name #{$username}
+    git config --global user.email #{$email}
+    # Clone the openstack-dev/devstack github repository
+    cd /opt
+    git clone https://github.com/mieweb/devstack.git
+    cd devstack
+    # Create development branch
+    git checkout -b #{$username}_mitaka_controller_node1 remotes/origin/mitaka_controller_node1
     git remote add upstream https://github.com/openstack-dev/devstack.git
-    # Create 'stack' user;
-    sudo ./tools/create-stack-user.sh;
-    sudo chown -R stack:stack .;
-    sudo updatedb;
-    # sudo -u stack ./stack.sh;"
-    config.vm.provision :shell, :inline => script
+    # Create 'stack' user
+    sudo ./tools/create-stack-user.sh
+    sudo chown -R stack:stack .
+    sudo updatedb
+    SCRIPT
+    config.vm.provision "shell", inline: $script
+  else
+    next
   end
 end
