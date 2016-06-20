@@ -1017,7 +1017,7 @@ if is_service_enabled keystone; then
 # Use this for debugging issues before files in accrc are created
 
 # Set up password auth credentials now that Keystone is bootstrapped
-export OS_IDENTITY_API_VERSION=2
+export OS_IDENTITY_API_VERSION=3
 export OS_AUTH_URL=$KEYSTONE_AUTH_URI
 export OS_USERNAME=admin
 export OS_USER_DOMAIN_ID=default
