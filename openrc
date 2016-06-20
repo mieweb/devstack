@@ -16,6 +16,12 @@ fi
 if [[ -n "$2" ]]; then
     OS_PROJECT_NAME=$2
 fi
+if [[ -n $3 ]]; then
+    OS_PROJECT_DOMAIN_ID=$3
+fi
+if [[ -n $4 ]]; then
+    OS_USER_DOMAIN_ID=$4
+fi
 
 # Find the other rc files
 RC_DIR=$(cd $(dirname "${BASH_SOURCE:-$0}") && pwd)
@@ -47,6 +53,8 @@ export OS_TENANT_NAME=$OS_PROJECT_NAME
 # In addition to the owning entity (project), nova stores the entity performing
 # the action as the **user**.
 export OS_USERNAME=${OS_USERNAME:-demo}
+export OS_USER_DOMAIN_ID=${OS_USER_DOMAIN_ID:-default}
+export OS_PROJECT_DOMAIN_ID=${OS_PROJECT_DOMAIN_ID:-default}
 
 # With Keystone you pass the keystone password instead of an api key.
 # Recent versions of novaclient use OS_PASSWORD instead of NOVA_API_KEYs
